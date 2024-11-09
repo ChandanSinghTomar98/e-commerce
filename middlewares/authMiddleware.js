@@ -14,7 +14,9 @@ export const authMiddleware=asyncHandler(async(req,res,next)=>{
       
           const decode=jwt.verify(token,process.env.ACCESS_SECRETE)
          const User=await user.findById(decode.id)
+        
          req.User=User
+         console.log('id',req.User)
          next();
       
     }else{
@@ -24,7 +26,7 @@ export const authMiddleware=asyncHandler(async(req,res,next)=>{
 
 export const isAdmin=asyncHandler(async(req,res,next)=>{
     const {email}=req.User
-
+console.log(email)
     const admin=await user.findOne({email})
     if(admin.role !=="admin"){
         throw new Error("this is not admin")
