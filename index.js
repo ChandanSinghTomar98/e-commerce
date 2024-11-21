@@ -5,6 +5,7 @@ import authRouter from "./routes/authRoutes.js"
 import bodyParser from "body-parser"
 import {notfound,errorHandler} from "./middlewares/errorHandler.js"
 import productRouter from "./routes/productRoutes.js"
+import blogRouter from "./routes/blogRoutes.js"
 import cookieParser from "cookie-parser"
 import morgan  from "morgan"
 import slugify from "slugify"
@@ -26,7 +27,7 @@ app.use(bodyParser.json())
 app.use(cookieParser())
 app.use("/api/v1/user",authRouter)
 app.use("/api/v1/product",productRouter)
-
+app.use("/api/v1/blog",blogRouter)
 
 
 app.use(notfound)
