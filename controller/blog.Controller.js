@@ -44,7 +44,7 @@ export const getBlog= asyncHandler(async(req,res)=>{
     try {
         const {id}= req.params
         validateMongoDbId(id)
-        const getBlog = await blog.findById(id).populate('likes');
+        const getBlog = await blog.findById(id).populate('likes').populate('dislikes');
       const update=await blog.findByIdAndUpdate(id,
             {
             $inc:{numViews:1},
@@ -55,7 +55,7 @@ export const getBlog= asyncHandler(async(req,res)=>{
             console.log('u',update)
         res.status(200).json({
            status:true,
-           data:update,
+           data:getBlog,
            message:"fetch blog successfully"
         })
     } catch (error) {

@@ -6,6 +6,7 @@ import bodyParser from "body-parser"
 import {notfound,errorHandler} from "./middlewares/errorHandler.js"
 import productRouter from "./routes/productRoutes.js"
 import blogRouter from "./routes/blogRoutes.js"
+import categoryRouter from "./routes/categoryRoutes.js"
 import cookieParser from "cookie-parser"
 import morgan  from "morgan"
 import slugify from "slugify"
@@ -28,6 +29,7 @@ app.use(cookieParser())
 app.use("/api/v1/user",authRouter)
 app.use("/api/v1/product",productRouter)
 app.use("/api/v1/blog",blogRouter)
+app.use("/api/v1/category",categoryRouter)
 
 
 app.use(notfound)
